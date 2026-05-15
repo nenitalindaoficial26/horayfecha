@@ -3,136 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Aesthetic Widget</title>
+    <title>Aesthetic Minimal Slider Widget</title>
     <link rel="stylesheet" href="style.css">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&family=Lora:ital,wght@0,400;0,600;1,400&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="perspective-container">
-        <div class="widget-wrapper" id="main-widget">
-            <!-- Lado Izquierdo: Enfoque -->
-            <div class="section left-focus">
-                <div class="time-container">
-                    <div id="time-display">00:00</div>
-                    <div class="date-weather">
-                        <span id="full-date">Thursday, April 16</span>
-                        <div id="weather-icon-container">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
-                        </div>
-                    </div>
+    <div class="widget-container">
+        <!-- BOTÓN DE AJUSTES (Sutil) -->
+        <button id="openSettings" class="settings-trigger">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </button>
+
+        <div class="slider-wrapper" id="slider">
+            <!-- CARD 1: RELOJ & FECHA -->
+            <div class="card card-time">
+                <div class="clock-section">
+                    <h1 id="time">00:00</h1>
+                    <p id="date">Jueves, 14 de mayo</p>
                 </div>
-                <div class="task-container">
-                    <span class="label">Tarea Principal</span>
-                    <input type="text" id="main-task" placeholder="¿Qué harás hoy?" maxlength="30">
+                <div class="footer-section">
+                    <div class="moon-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+                        </svg>
+                    </div>
+                    <span id="moonPhaseName" class="user-name-display">Luna Llena</span>
                 </div>
             </div>
 
-            <!-- Lado Derecho: Contexto -->
-            <div class="section right-context">
-                <div class="calendar-mini">
-                    <div id="month-header">ABRIL</div>
-                    <div class="calendar-grid" id="calendar-grid"></div>
+            <!-- CARD 2: CALENDAR -->
+            <div class="card card-calendar">
+                <div class="calendar-header">
+                    <button id="prevMonth">&lt;</button>
+                    <span id="monthName">Mayo</span>
+                    <button id="nextMonth">&gt;</button>
                 </div>
-                
-                <div class="bottom-controls">
-                    <div class="progress-section">
-                        <div class="progress-circle-container">
-                            <svg class="progress-ring" width="60" height="60">
-                                <circle class="progress-ring__circle-bg" stroke="currentColor" stroke-width="4" fill="transparent" r="26" cx="30" cy="30"/>
-                                <circle class="progress-ring__circle" stroke="currentColor" stroke-width="4" fill="transparent" r="26" cx="30" cy="30"/>
-                            </svg>
-                            <div id="progress-text">0%</div>
+                <div class="calendar-body">
+                    <div class="weekdays" id="weekdaysRow">
+                        <span>D</span><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span>
+                    </div>
+                    <div class="days-grid" id="daysGrid"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL DE AJUSTES -->
+        <div id="settingsModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Personalizar</h2>
+                    <button id="closeSettings">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="setting-item">
+                        <label>Idioma</label>
+                        <select id="langSelect">
+                            <option value="es">Español</option>
+                            <option value="en">English</option>
+                            <option value="fr">Français</option>
+                        </select>
+                    </div>
+                    <div class="setting-item">
+                        <label>Color de Acento</label>
+                        <div class="color-picker">
+                            <button class="color-dot active" style="background: #ff8fb1;" data-color="#ff8fb1"></button>
+                            <button class="color-dot" style="background: #a2d2ff;" data-color="#a2d2ff"></button>
+                            <button class="color-dot" style="background: #bde0fe;" data-color="#bde0fe"></button>
+                            <button class="color-dot" style="background: #cdb4db;" data-color="#cdb4db"></button>
+                            <button class="color-dot" style="background: #fdf0d5;" data-color="#fdf0d5"></button>
                         </div>
                     </div>
-                    <div class="quick-actions">
-                        <button id="btn-lang" title="Cambiar Idioma">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
-                        </button>
-                        <button id="btn-settings" title="Configuración">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
-                        </button>
+                    <div class="setting-item">
+                        <label>Fuente</label>
+                        <select id="fontSelect">
+                            <option value="'Outfit', sans-serif">Outfit (Moderno)</option>
+                            <option value="'Playfair Display', serif">Playfair (Elegante)</option>
+                            <option value="'Montserrat', sans-serif">Montserrat (Limpio)</option>
+                            <option value="'Lora', serif">Lora (Sofisticado)</option>
+                            <option value="'Quicksand', sans-serif">Quicksand (Suave)</option>
+                            <option value="'Courier New', Courier, monospace">Mono (Minimal)</option>
+                        </select>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Modal de Configuración -->
-    <div id="settings-modal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Ajustes Premium</h2>
-                <button id="close-modal"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
-            </div>
-            <div class="modal-body scrollable">
-                <div class="setting-item">
-                    <label>Nombre del Propietario</label>
-                    <input type="text" id="owner-name" placeholder="Ej: Nenita">
-                </div>
-                
-                <div class="setting-item">
-                    <label>Formato de Hora</label>
-                    <select id="time-format">
-                        <option value="24h">24 Horas</option>
-                        <option value="12h">12 Horas</option>
-                    </select>
-                </div>
-
-                <div class="setting-item">
-                    <label>Color de Acento (General)</label>
-                    <input type="color" id="accent-color-picker" value="#fbc6d0">
-                </div>
-
-                <div class="setting-item">
-                    <label>Color de Texto (Tarea Principal)</label>
-                    <select id="task-text-color">
-                        <option value="#ffffff">Blanco</option>
-                        <option value="#5d5d5d">Gris Oscuro</option>
-                    </select>
-                </div>
-
-                <div class="setting-item">
-                    <label>Color de Fondo del Widget</label>
-                    <input type="color" id="bg-color-picker" value="#ffffff">
-                </div>
-
-                <div class="setting-item row">
-                    <label>Modo Oscuro</label>
-                    <input type="checkbox" id="dark-mode-toggle">
-                </div>
-
-                <div class="setting-item">
-                    <label>Opacidad del Cristal</label>
-                    <input type="range" id="bg-opacity" min="0" max="1" step="0.1" value="0.9">
-                </div>
-                <div class="setting-item">
-                    <label>Efecto 3D (Intensidad)</label>
-                    <input type="range" id="tilt-intensity" min="0" max="30" value="15">
-                </div>
-                <div class="setting-item">
-                    <label>Fuente Principal</label>
-                    <select id="font-select">
-                        <option value="'Playfair Display', serif">Elegante (Playfair)</option>
-                        <option value="'Outfit', sans-serif">Moderno (Outfit)</option>
-                        <option value="'Dancing Script', cursive">Artístico (Dancing)</option>
-                    </select>
-                </div>
-                <div class="setting-item">
-                    <label>Visibilidad Clima</label>
-                    <input type="checkbox" id="show-weather" checked>
-                </div>
-                <div class="setting-item">
-                    <label>Visibilidad Progreso</label>
-                    <input type="checkbox" id="show-progress" checked>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button id="reset-settings" class="btn-secondary">Restablecer</button>
-                <button id="save-settings" class="btn-primary">Guardar Cambios</button>
-            </div>
+        <!-- PAGINACIÓN -->
+        <div class="pagination">
+            <span class="dot active" data-index="0"></span>
+            <span class="dot" data-index="1"></span>
         </div>
     </div>
 
