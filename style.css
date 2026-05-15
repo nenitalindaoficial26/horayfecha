@@ -32,8 +32,8 @@ body {
     background: var(--glass-bg);
     backdrop-filter: blur(20px);
     border-radius: 40px;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    box-shadow: var(--shadow);
+    border: 1px solid var(--accent-pink);
+    box-shadow: none; /* All shadows removed */
     position: relative;
     overflow: hidden;
     user-select: none;
@@ -92,6 +92,7 @@ body {
     height: 45px;
     color: var(--accent-pink);
     opacity: 0.9;
+    background: radial-gradient(circle, color-mix(in srgb, var(--accent-pink), transparent 85%) 0%, transparent 70%); /* Dynamic moon glow */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -185,7 +186,7 @@ body {
     color: white;
     border-radius: 50%;
     font-weight: 600;
-    box-shadow: 0 4px 10px rgba(255, 143, 177, 0.4);
+    box-shadow: none;
 }
 
 .has-event::after {
@@ -213,7 +214,7 @@ body {
 .dot {
     width: 8px;
     height: 8px;
-    background: var(--soft-pink);
+    background: color-mix(in srgb, var(--accent-pink), transparent 75%);
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -223,6 +224,7 @@ body {
     width: 18px;
     background: var(--accent-pink);
     border-radius: 10px;
+    box-shadow: none;
 }
 
 /* --- SETTINGS TRIGGER (Subtle) --- */
